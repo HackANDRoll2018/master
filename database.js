@@ -16,10 +16,10 @@ function create_new_lesson()
 {
 	var lesson = document.getElementById("lesson").value;
 	var class_time = document.getElementById("time").value;
-	var class_date = document.getElementById("date").value;
+	var class_date = getTodayDate();
 	// var unique_code = generateUniqueCode();
 	var classroom = document.getElementById("classroom").value;
-	var new_lesson = get_lesson_json(lesson, date, time, classroom, "open");
+	var new_lesson = get_lesson_json(lesson, class_date, class_time, classroom, "open");
 
 	$.ajax({
 		url: lesson_collection_link.concat("?" + apiKey),
@@ -143,4 +143,24 @@ function getQueryParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function getTodayDate()
+{
+	var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1;
+                var yyyy = today.getFullYear();
+
+                if(dd<10) {
+                    dd = '0'+dd
+                } 
+
+                if(mm<10) {
+                    mm = '0'+mm
+                } 
+
+                today = dd + '/' + mm + '/' + yyyy;
+
+    return today;
 }
