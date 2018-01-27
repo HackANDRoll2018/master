@@ -17,8 +17,8 @@ function create_new_lesson()
 	lesson = document.getElementById("lesson").value;
 	var class_time = document.getElementById("time").value;
 	var class_date = document.getElementById("date").value;
-	var unique_code = generateUniqueCode();
-	var new_lesson = get_lesson_json(lesson, date, time, unique_code, "open");
+	// var unique_code = generateUniqueCode();
+	var new_lesson = get_lesson_json(lesson, date, time, "", "open");
 
 	$.ajax({
 		url: lesson_collection_link.concat("?" + apiKey),
@@ -102,15 +102,15 @@ function compare_student_lists(return_data)
 }
 
 //create lesson json obj 
-function get_lesson_json(lesson, date, time, unique_code, unique_code_status)
+function get_lesson_json(lesson, date, time, url, url_status)
 {
 	var lesson_json = JSON.stringify(
 	{
 		"lesson" : lesson,
 		"date" : date,
 		"time" : time,
-		"unique_code" : unique_code,
-		"unique_code_status" : unique_code_status
+		"url" : url,
+		"url_status" : url_status
 	});
 
 	return lesson_json;
@@ -129,10 +129,10 @@ function get_attendance_json(lesson_id, student_number, student_name)
 	return attendance_json;
 }
 
-function generateUniqueCode()
-{
-	return '_' + Math.random().toString(36).substr(2, 9);
-}
+// function generateUniqueCode()
+// {
+// 	return '_' + Math.random().toString(36).substr(2, 9);
+// }
 
 function getQueryParameterByName(name, url) {
     if (!url) url = window.location.href;
