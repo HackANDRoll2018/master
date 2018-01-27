@@ -1,11 +1,13 @@
 var database_link = "https://api.mlab.com/api/1/databases/hackroll/collections";
 var lesson_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/lesson";
 var attendance_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/lesson_attendace";
+var result_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/result";
 var student_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/student";
 var apiKey = "apiKey=6158q4S1oyjh0rE3MDtYdYoqKYCQSPIL";
 var domain = "";
 var lesson_id ="5a6c42cec2ef1663f11a7fa7";
 var lesson ="";
+
 
 create_new_lesson();
 
@@ -24,7 +26,7 @@ function create_new_lesson()
 		contentType: "application/json",
 		success: function(return_data)
 		{
-			//return single lesson obj
+
 		}
 	});
 }
@@ -52,7 +54,7 @@ function create_new_attendance()
 //get lesson by lesson id
 function get_attendance_by_id(lesson_id)
 {
-	var get_attendance_link = attendance_collection_link.concat('?q={"lesson_id" : "' + lesson_id + '"}&');
+	var get_attendance_link = attendance_collection_link.concat('?q={"lesson_id" : "' + lesson_id + '"}&' + apiKey);
 	
 	$.ajax({
 			url: get_attendance_link.concat(apiKey),
@@ -60,9 +62,43 @@ function get_attendance_by_id(lesson_id)
 			contentType: "application/json",
 			success: function(return_data)
 			{
-				//return array of attendance by lesson id
+			    compare_student_lists(return_data));
 			}
 	});
+}
+
+//compare student lists
+function compare_student_lists(return_data)
+{
+    $.ajax({
+        url: student_collection_link.concat(apiKey),
+        type: "GET",
+        contentType: "application/json",
+        success: function(student_list)
+        {
+            List<JSONObject> studentList = student_list;
+            List<JSONObject> attendance = return_data;
+            Collections.sort(studentList);
+            Collections.sort(attendance);
+            var j = 0;
+            for(var i = 0; i < studentList; i++) {
+                if(studentList[i] !== attendance[j]) {
+                    var no_attendance = studentList[i];
+                    j++;
+                    $.ajax({
+                    			url: result_collection_link.concat("?" + apiKey),
+                    			data: no_attendance,
+                    			type: "POST",
+                    			contentType: "application/json",
+                    			success: function(return_data)
+                    			{
+                    				//return single attendance obj
+                    			}
+                    	});
+                }
+            }
+        }
+    })
 }
 
 //create lesson json obj 
