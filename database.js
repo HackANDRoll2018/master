@@ -19,7 +19,7 @@ function create_new_lesson()
 	var class_date = document.getElementById("date").value;
 	// var unique_code = generateUniqueCode();
 	var classroom = document.getElementById("classroom").value;
-	var new_lesson = get_lesson_json(lesson, date, time, classroom, "", "open");
+	var new_lesson = get_lesson_json(lesson, date, time, classroom, "open");
 
 	$.ajax({
 		url: lesson_collection_link.concat("?" + apiKey),
@@ -28,7 +28,7 @@ function create_new_lesson()
 		contentType: "application/json",
 		success: function(return_data)
 		{
-			window.location.href="qrCode.html";
+			window.location.href="qrCode.html?lesson_id=" + return_data._id["$oid"];
 		}
 	});
 }
@@ -70,40 +70,40 @@ function get_attendance_by_id(lesson_id)
 }
 
 //compare student lists
-function compare_student_lists(return_data)
-{
-    $.ajax({
-        url: student_collection_link.concat(apiKey),
-        type: "GET",
-        contentType: "application/json",
-        success: function(student_list)
-        {
-            List<JSONObject> studentList = student_list;
-            List<JSONObject> attendance = return_data;
-            Collections.sort(studentList);
-            Collections.sort(attendance);
-            var j = 0;
-            for(var i = 0; i < studentList; i++) {
-                if(studentList[j] !== attendance[i]) {
-                    var no_attendance = studentList[j];
-                    j++;
-                    $.ajax({
-                    			url: result_collection_link.concat("?" + apiKey),
-                    			data: no_attendance,
-                    			type: "POST",
-                    			contentType: "application/json",
-                    			success: function(return_data)
-                    			{
-                    			}
-                    	});
-                }j++;
-            }
-        }
-    })
-}
+// function compare_student_lists(return_data)
+// {
+//     $.ajax({
+//         url: student_collection_link.concat(apiKey),
+//         type: "GET",
+//         contentType: "application/json",
+//         success: function(student_list)
+//         {
+//             List<JSONObject> studentList = student_list;
+//             List<JSONObject> attendance = return_data;
+//             Collections.sort(studentList);
+//             Collections.sort(attendance);
+//             var j = 0;
+//             for(var i = 0; i < studentList; i++) {
+//                 if(studentList[j] !== attendance[i]) {
+//                     var no_attendance = studentList[j];
+//                     j++;
+//                     $.ajax({
+//                     			url: result_collection_link.concat("?" + apiKey),
+//                     			data: no_attendance,
+//                     			type: "POST",
+//                     			contentType: "application/json",
+//                     			success: function(return_data)
+//                     			{
+//                     			}
+//                     	});
+//                 }j++;
+//             }
+//         }
+//     })
+// }
 
 //create lesson json obj 
-function get_lesson_json(lesson, date, time, classroom, url, url_status)
+function get_lesson_json(lesson, date, time, classroom, status)
 {
 	var lesson_json = JSON.stringify(
 	{
@@ -111,8 +111,7 @@ function get_lesson_json(lesson, date, time, classroom, url, url_status)
 		"date" : date,
 		"time" : time,
 		"classroom" : classroom,
-		"url" : url,
-		"url_status" : url_status
+		"status" : status
 	});
 
 	return lesson_json;
