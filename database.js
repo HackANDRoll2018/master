@@ -52,7 +52,7 @@ function create_new_attendance()
 
 }
 
-//get lesson by lesson id
+//get attendance by lesson id
 function get_attendance_by_id(lesson_id)
 {
 	var get_attendance_link = attendance_collection_link.concat('?q={"lesson_id" : "' + lesson_id + '"}&' + apiKey);
@@ -132,4 +132,14 @@ function get_attendance_json(lesson_id, student_number, student_name)
 function generateUniqueCode()
 {
 	return '_' + Math.random().toString(36).substr(2, 9);
+}
+
+function getQueryParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
