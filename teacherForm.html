@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <script type="text/javascript" src = "database.js"></script>
+</head>
 <title>HacknRoll</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,10 +72,10 @@ body, html {
             </script>
             </br></br>
             <form action="teacherForm.html" method="POST">
-                Time : <input class="w3-input w3-border" type="time" style="width: 200px"></br>
-                Lesson : <input class="w3-input w3-border" type="value" style="width: 200px"></br>
-                Class : <input class="w3-input w3-border" type="value" style="width: 200px"></br>
-                <button class="w3-button w3-white w3-border w3-border-blue" type="Confirm" name = "confirm">CONFIRM</button>
+                Time : <input class="w3-input w3-border" type="time" style="width: 200px" id="time"></br>
+                Lesson : <input class="w3-input w3-border" type="value" style="width: 200px" id="lesson"></br>
+                Class : <input class="w3-input w3-border" type="value" style="width: 200px" id="class"></br>
+                <button class="w3-button w3-white w3-border w3-border-blue" type="Confirm" name = "confirm" onclick="create_new_lesson()">CONFIRM</button>
             </form>
         </div>
     </div>

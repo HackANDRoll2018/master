@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <script  type="text/javascript" src = "database.js"></script>
+</head>
 <title>HacknRoll</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,9 +55,9 @@ body, html {
     <div class="row">
         <div class="panel-body" align="center">
             <form action="studentForm.html" method="POST">
-                Student Name : <input class="w3-input w3-border" type="value" style="width: 300px" name="name"></br>
-                Student Number : <input class="w3-input w3-border" type="value" style="width: 300px" name="number"></br>
-                <button class="w3-button w3-white w3-border w3-border-blue" type="Confirm" name = "confirm">SUBMIT ATTENDANCE</button>
+                Student Name : <input class="w3-input w3-border" type="value" style="width: 300px" name="name" id="Name"></br>
+                Student Number : <input class="w3-input w3-border" type="value" style="width: 300px" name="number" id="number"></br>
+                <button class="w3-button w3-white w3-border w3-border-blue" type="Confirm" name = "confirm" onclick="create_new_attendance()">SUBMIT ATTENDANCE</button>
             </form>
         </div>
     </div>

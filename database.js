@@ -4,14 +4,18 @@ var attendance_collection_link = "https://api.mlab.com/api/1/databases/hackroll/
 var student_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/student";
 var apiKey = "apiKey=6158q4S1oyjh0rE3MDtYdYoqKYCQSPIL";
 var domain = "";
-var lesson_id ="5a6c42cec2ef1663f11a7fa7"; 
+var lesson_id ="5a6c42cec2ef1663f11a7fa7";
+var lesson ="";
 
 create_new_lesson();
 
 //create new lesson
 function create_new_lesson()
 {
-	var new_lesson = get_lesson_json("CS1010 Tutorial", "27/1/2018", "12:00 pm", "", "open");
+	lesson = document.getElementById("lesson").value;
+	var class_time = document.getElementById("time").value;
+	var class_date = document.getElementById("date").value;
+	var new_lesson = get_lesson_json(lesson, date, time, "", "open");
 
 	$.ajax({
 		url: lesson_collection_link.concat("?" + apiKey),
@@ -28,7 +32,9 @@ function create_new_lesson()
 //create new attendance
 function create_new_attendance()
 {
-	var new_attendance = get_attendance_json("5a6c42cec2ef1663f11a7fa7", "A12345", "StudentA");
+	var student_name = document.getElementById("Name").value;
+	var student_id = document.getElementById("number").value;
+	var new_attendance = get_attendance_json("5a6c42cec2ef1663f11a7fa7", student_id, student_name);
 
 	$.ajax({
 			url: attendance_collection_link.concat("?" + apiKey),
