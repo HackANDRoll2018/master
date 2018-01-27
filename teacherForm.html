@@ -32,15 +32,9 @@ body, html {
   <div class="w3-bar w3-white w3-card-2" id="myNavbar">
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
-      <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
-      <?php
-      if(isset($_SESSION['user'])) {
-          echo '<a href="dashBoard.php" class="w3-bar-item w3-button"><i class="fa fa-user"></i> DASHBOARD</a>';
-      } else {
-          echo '<a href="login.php" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>';
-      }
-      ?>
-      <a href="Credit.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CREDIT</a> <!-- Change this name? !-->
+      <a href="teacherForm.html" class="w3-bar-item w3-button"><i class="fa fa-pencil"></i> CREATE ATTENDANCE </a>
+      <a href="pastAttendance.html" class="w3-bar-item w3-button"><i class="fa fa-book"></i> PAST ATTENDANCES </a> 
+      <a href="index.html" class="w3-bar-item w3-button"><i class="fa fa-desktop"></i> SIGN OUT </a>
     </div>
   </div>
 </div>
@@ -52,11 +46,11 @@ body, html {
   <p><div class="container">   
     <div class="row">
         <div class="panel-body" align="center">
-            Date : 
+            <b>Date : 
             <script> 
                 var today = new Date();
                 var dd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
+                var mm = today.getMonth()+1;
                 var yyyy = today.getFullYear();
 
                 if(dd<10) {
@@ -67,14 +61,14 @@ body, html {
                     mm = '0'+mm
                 } 
 
-                today = mm + '/' + dd + '/' + yyyy;
+                today = dd + '/' + mm + '/' + yyyy;
                 document.write(today);
-            </script>
+            </script></b>
             </br></br>
             <form action="teacherForm.html" method="POST">
-                Time : <input class="w3-input w3-border" type="time" style="width: 200px" id="time"></br>
-                Lesson : <input class="w3-input w3-border" type="value" style="width: 200px" id="lesson"></br>
-                Class : <input class="w3-input w3-border" type="value" style="width: 200px" id="class"></br>
+                <b>Time : </b><input class="w3-input w3-border" type="time" style="width: 200px" id="time"></br>
+                <b>Lesson : </b><input class="w3-input w3-border" type="value" style="width: 200px" id="lesson"></br>
+                <b>Classroom : </b><input class="w3-input w3-border" type="value" style="width: 200px" id="classroom"></br>
                 <button class="w3-button w3-white w3-border w3-border-blue" type="Confirm" name = "confirm" onclick="create_new_lesson()">CONFIRM</button>
             </form>
         </div>
