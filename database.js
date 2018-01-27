@@ -9,7 +9,7 @@ var lesson_id ="5a6c42cec2ef1663f11a7fa7";
 var lesson ="";
 
 
-create_new_lesson();
+// create_new_lesson();
 
 //create new lesson
 function create_new_lesson()
@@ -101,15 +101,15 @@ function compare_student_lists(return_data)
 }
 
 //create lesson json obj 
-function get_lesson_json(lesson, date, time, link, link_status)
+function get_lesson_json(lesson, date, time, unique_code, unique_code_status)
 {
 	var lesson_json = JSON.stringify(
 	{
 		"lesson" : lesson,
 		"date" : date,
 		"time" : time,
-		"link" : link,
-		"link_status" : link_status
+		"unique_code" : unique_code,
+		"unique_code_status" : unique_code_status
 	});
 
 	return lesson_json;
