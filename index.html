@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>hack&roll2018</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body, h1, h2, h3, h4, h5, h6 {font-family: "Raleway", sans-serif}
+      body, html {
+      height: 100%;
+      line-height: 1.8;
+      }
+      /* Full height image header */
+      .bgimg-1 {
+        background-position: center;
+        background-size: cover;
+        /*background-image: url("/w3images/mac.jpg");*/
+        background-image: url("pierre-ricadat.jpg");
+        min-height: 100%;
+      }
+      .w3-bar .w3-button {
+        padding: 20px;
+      }
+    </style>
+  </head>
+
+<!-- Navbar (sit on top) -->
+<!--<div class="w3-top">
+  <div class="w3-bar w3-white w3-card-2" id="myNavbar"> -->
+    <!-- Right-sided navbar links -->
+   <!-- <div class="w3-right w3-hide-small">
+	  <a href="homePage.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
+      <a href="aboutUs.html" class="w3-bar-item w3-button"><i class="fa fa-info-circle"></i> ABOUT</a>
+      <a href="dashBoard.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> DASHBOARD</a>
+      <a href="search.html" class="w3-bar-item w3-button"><i class="fa fa-search"></i> SEARCH</a>
+      <a href="contactUs.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+    </div>
+  </div>
+</div> -->
+
+<!-- Header with full-height image -->
+
+
+  <body>
+    <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+      <div class="w3-display-middle w3-text-black w3-center" style="padding:48px">
+        <span class="w3-xxlarge">Get started!</span><br>
+        <form class="w3-container">
+          <input id="username" class="w3-input" type="text" placeholder="Username"><br>
+          <input id="password" class="w3-input" type="password" placeholder="Password"><br>
+        </form>
+          <button class="w3-button w3-border" onclick="authenticate()">Sign in</button>
+      </div> 
+    </header>
+
+    <script>
+      function authenticate() {
+        var user = document.getElementById("username").value;
+        var pw = document.getElementById("password").value;
+        if (user == "tanyz" && pw == "password")  {
+          window.location.href = "https://google.com";
+        } else {
+          alert("Incorrect username/password");
+        }
+      }
+    </script>
+  </body>
+
+</html>
