@@ -14,11 +14,12 @@ var lesson ="";
 //create new lesson
 function create_new_lesson()
 {
-	lesson = document.getElementById("lesson").value;
+	var lesson = document.getElementById("lesson").value;
 	var class_time = document.getElementById("time").value;
 	var class_date = document.getElementById("date").value;
 	// var unique_code = generateUniqueCode();
-	var new_lesson = get_lesson_json(lesson, date, time, "", "open");
+	var classroom = document.getElementById("classroom").value;
+	var new_lesson = get_lesson_json(lesson, date, time, classroom, "", "open");
 
 	$.ajax({
 		url: lesson_collection_link.concat("?" + apiKey),
@@ -27,7 +28,7 @@ function create_new_lesson()
 		contentType: "application/json",
 		success: function(return_data)
 		{
-
+			window.location.href="qrCode.html";
 		}
 	});
 }
@@ -63,7 +64,7 @@ function get_attendance_by_id(lesson_id)
 			contentType: "application/json",
 			success: function(return_data)
 			{
-			    compare_student_lists(return_data));
+			    compare_student_lists(return_data);
 			}
 	});
 }
@@ -102,13 +103,14 @@ function compare_student_lists(return_data)
 }
 
 //create lesson json obj 
-function get_lesson_json(lesson, date, time, url, url_status)
+function get_lesson_json(lesson, date, time, classroom, url, url_status)
 {
 	var lesson_json = JSON.stringify(
 	{
 		"lesson" : lesson,
 		"date" : date,
 		"time" : time,
+		"classroom" : classroom,
 		"url" : url,
 		"url_status" : url_status
 	});

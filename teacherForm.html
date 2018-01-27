@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script type="text/javascript" src = "jquery-3.3.1.js"></script>
     <script type="text/javascript" src = "database.js"></script>
 </head>
 <title>HacknRoll</title>
@@ -46,7 +47,7 @@ body, html {
   <p><div class="container">   
     <div class="row">
         <div class="panel-body" align="center">
-            <b>Date : 
+            <b id="date">Date : 
             <script> 
                 var today = new Date();
                 var dd = today.getDate();
@@ -66,17 +67,14 @@ body, html {
 
             </script></b>
             </br></br>
-            <form action="teacherForm.html" method="POST">
+            <form action="qrCode.html" method="POST">
                 <b>Time : </b><input class="w3-input w3-border" type="time" style="width: 200px" id="time"></br>
                 <b>Lesson : </b><input class="w3-input w3-border" type="value" style="width: 200px" id="lesson"></br>
                 <b>Classroom : </b><input class="w3-input w3-border" type="value" style="width: 200px" id="classroom"></br>
             </form>
                 <button class="w3-button w3-white w3-border w3-border-blue" type="button" name = "confirm" onclick="myFunction()">CONFIRM</button>
                 <script>
-                    function myFunction() {
-                        window.location.href="qrCode.html";
-                        create_new_lesson();
-
+                    function myFunction() {create_new_lesson();
                     }
                 </script>
         </div>
