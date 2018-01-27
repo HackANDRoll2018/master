@@ -1,6 +1,6 @@
 var database_link = "https://api.mlab.com/api/1/databases/hackroll/collections";
 var lesson_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/lesson";
-var attendance_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/lesson_attendace";
+var attendance_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/lesson_attendance";
 var result_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/result";
 var student_collection_link = "https://api.mlab.com/api/1/databases/hackroll/collections/student";
 var apiKey = "apiKey=6158q4S1oyjh0rE3MDtYdYoqKYCQSPIL";
