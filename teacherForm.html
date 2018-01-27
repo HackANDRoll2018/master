@@ -63,14 +63,22 @@ body, html {
 
                 today = dd + '/' + mm + '/' + yyyy;
                 document.write(today);
+
             </script></b>
             </br></br>
             <form action="teacherForm.html" method="POST">
                 <b>Time : </b><input class="w3-input w3-border" type="time" style="width: 200px" id="time"></br>
                 <b>Lesson : </b><input class="w3-input w3-border" type="value" style="width: 200px" id="lesson"></br>
                 <b>Classroom : </b><input class="w3-input w3-border" type="value" style="width: 200px" id="classroom"></br>
-                <button class="w3-button w3-white w3-border w3-border-blue" type="Confirm" name = "confirm" onclick="create_new_lesson()">CONFIRM</button>
             </form>
+                <button class="w3-button w3-white w3-border w3-border-blue" type="button" name = "confirm" onclick="myFunction()">CONFIRM</button>
+                <script>
+                    function myFunction() {
+                        window.location.href="qrCode.html";
+                        create_new_lesson();
+
+                    }
+                </script>
         </div>
     </div>
 </div>
