@@ -82,8 +82,8 @@ function compare_student_lists(return_data)
             Collections.sort(attendance);
             var j = 0;
             for(var i = 0; i < studentList; i++) {
-                if(studentList[i] !== attendance[j]) {
-                    var no_attendance = studentList[i];
+                if(studentList[j] !== attendance[i]) {
+                    var no_attendance = studentList[j];
                     j++;
                     $.ajax({
                     			url: result_collection_link.concat("?" + apiKey),
@@ -92,10 +92,9 @@ function compare_student_lists(return_data)
                     			contentType: "application/json",
                     			success: function(return_data)
                     			{
-                    				//return single attendance obj
                     			}
                     	});
-                }
+                }j++;
             }
         }
     })
