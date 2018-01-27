@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<title>HacknRoll</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+.w3-bar .w3-button {
+  padding: 20px;
+}
+.bgimg-1 {
+    background-position: center;
+    background-size: cover;
+    background-image: url("pierre-ricadat.jpg");
+    min-height: 100%;
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card-2" id="myNavbar">
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
+      <?php
+      if(isset($_SESSION['user'])) {
+          echo '<a href="dashBoard.php" class="w3-bar-item w3-button"><i class="fa fa-user"></i> DASHBOARD</a>';
+      } else {
+          echo '<a href="login.php" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>';
+      }
+      ?>
+      <a href="Credit.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CREDIT</a> <!-- Change this name? !-->
+    </div>
+  </div>
+</div>
+
+<!-- Form Section !-->
+<header class="bgimg-1 w3-display-container w3-grayscale-min">
+<div class="w3-container" style="padding:96px" id="home">
+  <h1 class="w3-center">Start attendance for today!</h1>
+  <p><div class="container">   
+    <div class="row">
+        <div class="panel-body" align="center">
+            Date : 
+            <script> 
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+
+                if(dd<10) {
+                    dd = '0'+dd
+                } 
+
+                if(mm<10) {
+                    mm = '0'+mm
+                } 
+
+                today = mm + '/' + dd + '/' + yyyy;
+                document.write(today);
+            </script>
+            </br></br>
+            <form action="teacherForm.html" method="POST">
+                Time : <input class="w3-input w3-border" type="time" style="width: 200px"></br>
+                Lesson : <input class="w3-input w3-border" type="value" style="width: 200px"></br>
+                Class : <input class="w3-input w3-border" type="value" style="width: 200px"></br>
+                <button class="w3-button w3-white w3-border w3-border-blue" type="Confirm" name = "confirm">CONFIRM</button>
+            </form>
+        </div>
+    </div>
+</div>
