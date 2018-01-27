@@ -17,7 +17,8 @@ function create_new_lesson()
 	lesson = document.getElementById("lesson").value;
 	var class_time = document.getElementById("time").value;
 	var class_date = document.getElementById("date").value;
-	var new_lesson = get_lesson_json(lesson, date, time, "", "open");
+	var unique_code = generateUniqueCode();
+	var new_lesson = get_lesson_json(lesson, date, time, unique_code, "open");
 
 	$.ajax({
 		url: lesson_collection_link.concat("?" + apiKey),
@@ -128,4 +129,7 @@ function get_attendance_json(lesson_id, student_number, student_name)
 	return attendance_json;
 }
 
-
+function generateUniqueCode()
+{
+	return '_' + Math.random().toString(36).substr(2, 9);
+}
